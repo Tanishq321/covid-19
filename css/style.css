@@ -20,6 +20,10 @@ html{
     color: white;
 }
 
+.nav_style button{
+    color: white;
+}
+
 .main_header{
     height: 450px;
     width: 100%;
