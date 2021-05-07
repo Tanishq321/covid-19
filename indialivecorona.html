@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Corona(COVID-19)</title>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js" integrity="sha256-jDnOKIOq2KNsQZTcBTEnsp76FnfMEttF6AV2DF2fFNE=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="icon" href="images/mainfavicon.ico" type="image/icon type">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body onload="fetch()">
+    
+
+
+    <nav class="navbar navbar-expand-lg nav_style p-3">
+        <a class="navbar-brand pl-5" href="index.html">COVID-19</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto pr-5 text-capitalize">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="worldcoronalive.html">worldcoronalive</a>
+            </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="indiacoronalive.html">indiacoronalive</a>
+              </li>
+
+          </ul>
+
+        </div>
+      </nav>
+
+
+
+      <section class="corona_update container-fluid">
+        <div class="my-5">
+          <h3 class="text-uppercase text-center"> COVID-19 LIVE UPDATES OF THE INDIA</h3>
+        </div>
+        
+        <div class="table-responsive">
+      
+          <table class="table table-bordered table-striped text-center" id="tbval">
+           <tr>
+             <th class="text-capitalize">Country</th>
+             <th class="text-capitalize">state</th>
+             <th class="text-capitalize">confirmed</th>
+             <th class="text-capitalize">active</th>
+             <th class="text-capitalize">recovered</th>
+             <th class="text-capitalize">deaths</th>
+           </tr>
+         </table>
+      
+        </div>
+      
+      </div>
+      
+      </section>
+
+
+
+      
+      <div class="container scrolltop float-right pr-5">
+        <i class="fa fa-arrow-up" onclick="topFunction()" id="myBtn"></i>
+      </div>
+
+
+
+<!-- //////////////////////////////////////// Footer ////////////////////////////////////////////////// -->
+
+
+
+      <footer class="mt-5">
+        <div class="footer_style text-white text-center container-fluid">
+          <p>copyright by Tanishq Goel</p>
+        </div>
+      </footer>
+
+
+<script>
+
+mybutton = document.getElementById("myBtn");
+
+window.onscroll = function() {scrollFunction()};
+function scrollFunction() {
+  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+
+
+
+function fetch(){
+    $.get('https://api.covid19india.org/data.json',
+
+function (data){
+          // console.log(data['Countries'].length);
+          var tbval = document.getElementById('tbval');
+          for(var i=1; i<(data['statewise'].length); i++){
+            var x = tbval.insertRow();
+
+            x.insertCell(0);
+
+            tbval.rows[i].cells[0].innerHTML = data['statewise'][i-1]['lastupdatedtime'];
+            tbval.rows[i].cells[0].style.background = '#7a4a91';
+            tbval.rows[i].cells[0].style.color = '#fff';
+
+            x.insertCell(1);
+            tbval.rows[i].cells[1].innerHTML = data['statewise'][i-1]['state'];
+            tbval.rows[i].cells[1].style.background = '#4bb7d8';
+
+            x.insertCell(2);
+            tbval.rows[i].cells[2].innerHTML = data['statewise'][i-1]['confirmed'];
+            tbval.rows[i].cells[2].style.background = '#4bb7d8';
+
+            x.insertCell(3);
+            tbval.rows[i].cells[3].innerHTML = data['statewise'][i-1]['active'];
+            tbval.rows[i].cells[3].style.background = '#f36e23';
+
+            x.insertCell(4);
+            tbval.rows[i].cells[4].innerHTML = data['statewise'][i-1]['recovered'];
+            tbval.rows[i].cells[4].style.background = '#4bb7d8';
+
+            x.insertCell(5);
+            tbval.rows[i].cells[5].innerHTML = data['statewise'][i-1]['deaths'];
+            tbval.rows[i].cells[5].style.background = '#9cc850';
+
+        }
+        }
+    );
+}
+
+
+
+
+</script>
+</body>
+</html>
