@@ -18,6 +18,14 @@ html{
 .row{
     margin-left: 0!important; margin-right: 0!important;
 }
+
+.navbar-toggler{
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+}
+
 .nav_style{
     background-color: #a29bfe!important;
 }
