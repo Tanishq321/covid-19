@@ -9,9 +9,11 @@ html{
     font-family: 'Muli', sans-serif;
 }
 
-.navbar img{
-    width: 20px;
-    height: 20px;
+.navbar{
+    display: block;
+    width: 25px;
+    margin: 40px auto 0;
+    cursor: pointer;
 }
 
 .row{
