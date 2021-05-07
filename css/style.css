@@ -9,19 +9,21 @@ html{
     font-family: 'Muli', sans-serif;
 }
 
+.navbar{
+    display: block;
+    width: 25px;
+    margin: 40px auto 0;
+    cursor: pointer;
+}
+
 .row{
     margin-left: 0!important; margin-right: 0!important;
 }
-
 .nav_style{
     background-color: #a29bfe!important;
 }
 
 .nav_style a{
-    color: white;
-}
-
-.nav_style button{
     color: white;
 }
 
